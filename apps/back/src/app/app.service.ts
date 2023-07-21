@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { GetListOfCitiesRequest } from '@ottonova/dto';
 import { City } from '@ottonova/entity';
 import { Repository } from 'typeorm';
+import { IPaginate, paginate } from '../helper';
 
 @Injectable()
 export class AppService {
@@ -10,7 +12,13 @@ export class AppService {
     private cityRepo: Repository<City>
   ) {}
 
-  get(): Promise<City[]> {
-    return this.cityRepo.find({ relations: ['landmarks'] });
+  async get(query: GetListOfCitiesRequest): Promise<IPaginate<City>> {
+    const { limit, page } = query;
+
+    const queryBuilder = await this.cityRepo
+      .createQueryBuilder('city')
+      .leftJoinAndSelect('city.landmarks', 'landmarks');
+
+    return paginate<City>(queryBuilder, limit, page);
   }
 }

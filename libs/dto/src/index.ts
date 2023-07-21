@@ -1,1 +1,1 @@
-export * from './lib/dto';
+export * from './get-list-of-cities-request.dto';
