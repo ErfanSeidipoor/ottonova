@@ -1,15 +1,15 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne } from "typeorm";
-import BaseModel from "./baseModel.entity";
-import { City } from "./city.entity";
+import { Column, Entity, Index, JoinColumn, ManyToOne } from 'typeorm';
+import BaseModel from './baseModel.entity';
+import { City } from './city.entity';
 
-@Index("landmark_pkey", ["id"], { unique: true })
-@Entity("landmark", { schema: "public" })
+@Index('landmark_pkey', ['id'], { unique: true })
+@Entity('landmark', { schema: 'public' })
 export class Landmark extends BaseModel {
-  @Column("varchar", {
-    name: "name",
+  @Column('varchar', {
+    name: 'name',
     nullable: false,
     length: 50,
-    unique: true,
+    unique: false,
   })
   name: string;
 
@@ -17,8 +17,8 @@ export class Landmark extends BaseModel {
     nullable: false,
   })
   @JoinColumn({
-    name: "city_id",
-    referencedColumnName: "id",
+    name: 'city_id',
+    referencedColumnName: 'id',
   })
   city: City;
 }

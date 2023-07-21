@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@ottonova/dto": ["libs/dto/src/index.ts"],
-      "@ottonova/entity": ["libs/entity/src/index.ts"]
+      "@ottonova/entity": ["libs/entity/src/index.ts"],
+      "@ottonova/migration": ["libs/migration/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
