@@ -2,7 +2,14 @@
   "name": "@ottonova/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "typeorm:cli": "env-cmd --silent ts-node --transpile-only ./node_modules/typeorm/cli.js -d ./ormconfig.ts",
+    "db:drop": "npm run typeorm:cli schema:drop",
+    "migration:create": "typeorm  migration:create libs/migration/src/seed",
+    "migration:run": "npm run typeorm:cli migration:run",
+    "migration:revert": "npm run typeorm:cli migration:revert",
+    "migration:show": "npm run typeorm:cli -- migration:show"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^10.0.2",
@@ -13,6 +20,7 @@
     "axios": "^1.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "env-cmd": "^10.1.0",
     "pg": "^8.11.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
