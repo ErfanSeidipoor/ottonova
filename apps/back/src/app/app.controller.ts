@@ -1,13 +1,14 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 
 import { AppService } from './app.service';
+import { GetListOfCitiesRequest } from '@ottonova/dto';
 
 @Controller('/city')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getData() {
-    return this.appService.get();
+  getData(@Query() query: GetListOfCitiesRequest) {
+    return this.appService.get(query);
   }
 }
