@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ottonova/dto": ["libs/dto/src/index.ts"]
+      "@ottonova/dto": ["libs/dto/src/index.ts"],
+      "@ottonova/entity": ["libs/entity/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
