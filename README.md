@@ -69,7 +69,7 @@ nx serve front
 ## API Documentation
 
 The backend API provides the following endpoint:
-**GET** `/api/cities`: Retrieves JSON data containing information about various cities.
+**GET** `/api/city`: Retrieves JSON data containing information about various cities.
 
 ## Technologies Used
 
