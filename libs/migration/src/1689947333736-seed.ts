@@ -38,17 +38,20 @@ export class Seed1689947333736 implements MigrationInterface {
     for (const city of cities) {
       const { name } = city;
 
-      const [{ id: cityId }] = await queryRunner.manager.query(
-        `SELECT id FROM public.city where name='${name}';`
+      const cityEntities = await queryRunner.manager.query(
+        `SELECT id FROM public.city where name='${city.name}';`
       );
 
-      await queryRunner.manager.query(
-        `DELETE FROM public.city WHERE id='${cityId}';`
-      );
+      if (cityEntities.length) {
+        const [cityEntity] = cityEntities;
+        await queryRunner.manager.query(
+          `DELETE FROM public.city WHERE id='${cityEntity.id}';`
+        );
 
-      await queryRunner.manager.query(
-        `DELETE FROM public.landmark WHERE city_id='${cityId}';`
-      );
+        await queryRunner.manager.query(
+          `DELETE FROM public.landmark WHERE city_id='${cityEntity.id}';`
+        );
+      }
     }
   }
 }
