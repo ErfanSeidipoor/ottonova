@@ -7,3 +7,4 @@ TYPEORM_SYNCHRONIZE=
 TYPEORM_PORT=5432
 TYPEORM_MIGRATIONS_DIR=libs/migration/src
 TYPEORM_MIGRATIONS=libs/migration/src/*.ts
+NX_API_ADDRESS="http://localhost:3000/api"

@@ -1,16 +1,5 @@
 import { SelectQueryBuilder } from 'typeorm';
 
-export interface IPaginate<T> {
-  items: T[];
-  meta: {
-    totalItems: number;
-    itemCount: number;
-    itemsPerPage: number;
-    totalPages: number;
-    currentPage: number;
-  };
-}
-
 export const paginate = async <T>(
   queryBuilder: SelectQueryBuilder<T>,
   limit = 10,
