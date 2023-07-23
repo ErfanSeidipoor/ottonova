@@ -8,4 +8,7 @@ export default {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/apps/front',
+  transformIgnorePatterns: [
+    `/node_modules/(?!react-leaflet|react-leaflet|@react-leaflet)`,
+  ],
 };
