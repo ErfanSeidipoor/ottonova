@@ -167,7 +167,7 @@ export const CityCard: FC<{ city?: CityModel; loading?: boolean }> = ({
 
   if (loading || !city) {
     return (
-      <Card sx={{ maxWidth: 345, minWidth: 250 }}>
+      <Card sx={{ minWidth: 345 }}>
         <CardMedia component="div" style={{ height: 140 }}>
           <Skeleton variant="rectangular" height={140} />
         </CardMedia>
@@ -192,7 +192,7 @@ export const CityCard: FC<{ city?: CityModel; loading?: boolean }> = ({
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ minWidth: 345 }}>
       <CardMedia component="div" style={{ height: 140 }}>
         {renderMap()}
       </CardMedia>

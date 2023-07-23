@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { GetListOfCitiesRequest } from '@ottonova/dto';
+import { GetListOfCitiesRequest, IPaginate } from '@ottonova/dto';
 import { City } from '@ottonova/entity';
 import { Repository } from 'typeorm';
-import { IPaginate, paginate } from '../helper';
+import { paginate } from '../helper';
 
 @Injectable()
 export class AppService {

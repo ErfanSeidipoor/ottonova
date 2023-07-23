@@ -2,14 +2,10 @@ import { CityCard } from '../components';
 import { CityModel } from '../models';
 import './app.css';
 
-import Button from '@mui/material/Button';
-
 export function App() {
   return (
     <div>
-      <h1>{'ottonova'}</h1>
-      <Button>{'ottonova'}</Button>
-      <CityCard
+      {/* <CityCard
         city={
           new CityModel({
             name: 'New York City',
@@ -47,7 +43,7 @@ export function App() {
             ],
           })
         }
-      />
+      /> */}
     </div>
   );
 }
