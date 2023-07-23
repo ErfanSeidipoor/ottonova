@@ -6,7 +6,11 @@ export const MainPage = () => {
   const { cities, error, onShowMore, showMore, isFetching } = useData();
 
   if (error) {
-    return <Typography>{JSON.stringify(error)}</Typography>;
+    return (
+      <Typography variant="h6" color={'error'}>
+        {error}
+      </Typography>
+    );
   }
 
   const renderCities = () => (
@@ -27,6 +31,7 @@ export const MainPage = () => {
     if (isFetching && !cities.length) {
       return (
         <Stack
+          data-testid="main-page-loading-skeleton"
           spacing={{ xs: 1, sm: 2 }}
           direction="row"
           justifyContent={'center'}

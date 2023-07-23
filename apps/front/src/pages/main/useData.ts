@@ -12,28 +12,28 @@ export const useData = () => {
 
   const [cities, setCities] = useState<CityModel[]>([]);
   const [meta, setMeta] = useState<Meta>();
+  const [error, setError] = useState('');
 
   const handleGetCities = (query: GetListOfCitiesRequest) => async () => {
     await sleep();
     return await getCities(query);
   };
 
-  const { isLoading, error, isFetching } = useQuery(
-    ['cities', query],
-    handleGetCities(query),
-    {
-      retryOnMount: false,
-      refetchOnWindowFocus: false,
-      onSuccess: (data) => {
-        setMeta(data.getMeta());
-        if (data.getMeta().isFirstPage()) {
-          setCities(data.getModels());
-        } else {
-          setCities([...cities, ...data.getModels()]);
-        }
-      },
-    }
-  );
+  const { isFetching } = useQuery(['cities', query], handleGetCities(query), {
+    retryOnMount: false,
+    refetchOnWindowFocus: false,
+    onSuccess: (data) => {
+      setMeta(data.getMeta());
+      if (data.getMeta().isFirstPage()) {
+        setCities(data.getModels());
+      } else {
+        setCities([...cities, ...data.getModels()]);
+      }
+    },
+    onError: (error) => {
+      setError(`${error}`);
+    },
+  });
 
   const onShowMore = () => {
     setQuery((query) => ({ ...query, page: meta?.getNextpage() }));
@@ -43,7 +43,6 @@ export const useData = () => {
 
   return {
     error,
-    isLoading,
     isFetching,
     cities,
     onShowMore,
