@@ -63,6 +63,7 @@ export const MainPage = () => {
     >
       <Typography variant="h4" component={'h1'} m={2} textAlign={'center'}>
         {'Top Cities to Live in The World'}
+
       </Typography>
       {renderLoading()}
       {renderCities()}

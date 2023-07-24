@@ -9,7 +9,7 @@
     "migration:run": "npm run typeorm:cli migration:run",
     "migration:revert": "npm run typeorm:cli migration:revert",
     "migration:show": "npm run typeorm:cli -- migration:show",
-    "start:api:production": "npm run migration:run && node dist/apps/back/main.js"
+    "start:back:production": "npm run migration:run && node dist/apps/back/main.js"
   },
   "private": true,
   "dependencies": {

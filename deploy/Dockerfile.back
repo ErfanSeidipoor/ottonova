@@ -9,5 +9,6 @@ RUN npm install --legacy-peer-deps
 ADD . /app
 
 RUN npx nx build back
+RUN npx nx build back
 
 CMD ["npm", "run", "start:back:production"]
