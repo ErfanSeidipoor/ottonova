@@ -1,0 +1,45 @@
+version: '3'
+services:
+  ottonova_db:
+    restart: always
+    image: postgres:14
+    container_name: 'ottonova-db-container'
+    ports:
+      - '${TYPEORM_PORT}:5432'
+    environment:
+      - 'POSTGRES_USER=root'
+      - 'POSTGRES_PASSWORD=password'
+      - 'POSTGRES_DB=ottonova'
+
+  ottonova_back:
+    image: ottonova_back
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.back
+    restart: always
+    container_name: 'back-container'
+    environment:
+      - 'TYPEORM_CONNECTION=postgres'
+      - 'TYPEORM_HOST=ottonova_db'
+      - 'TYPEORM_PORT=5432'
+      - 'TYPEORM_SYNCHRONIZE='
+      - 'TYPEORM_USERNAME=root'
+      - 'TYPEORM_PASSWORD=password'
+      - 'TYPEORM_DATABASE=ottonova'
+      - 'TYPEORM_MIGRATIONS_DIR=libs/migration/src'
+      - 'TYPEORM_MIGRATIONS=libs/migration/src/*.ts'
+
+    ports:
+      - '4441:4441'
+    depends_on:
+      - ottonova_db
+
+  ottonova_front:
+    image: ottonova_front
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.front
+    container_name: 'front-container'
+    restart: always
+    ports:
+      - '4442:80'

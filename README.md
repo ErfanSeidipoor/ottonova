@@ -6,6 +6,8 @@
 [![GitHub issues](https://img.shields.io/github/issues/ErfanSeidipoor/ottonova)](https://github.com/ErfanSeidipoor/ottonova/issues)
 [![GitHub stars](https://img.shields.io/github/stars/ErfanSeidipoor/ottonova)](https://github.com/ErfanSeidipoor/ottonova/stargazers)
 
+you can see final version of this software: [http://161.97.108.195:4442/](http://161.97.108.195:4442/)
+
 ## Table of Contents
 
 - [Description](#description)
@@ -46,25 +48,61 @@ git clone https://github.com/ErfanSeidipoor/ottonova.git
 cd ottonova
 ```
 
-2. Install dependencies:
+### Development
 
-```bash
-npm install
+1. Make sure you have Node.js installed on your machine.
+2. Open a terminal or command prompt.
+3. Navigate to the project root folder.
+4. Run `yarn install` or `npm install` to install project dependencies.
+5. Install Nx globally using: `npm install -g nx`.
+6. Create a `.env` file inside the root of the project and copy the contents from `.envsample` to it.
+7. Start the development environment by running the following Docker command:
+
+```
+docker-compose -f docker-compose-develop.yml up -d
 ```
 
-### Usage
+8. Seed the database using: `npm run migration:run`.
+9. Run the backend server with: `nx serve back`.
+10. Run the frontend application with: `nx serve front`.
 
-3. Start the backend server
+### Test (back)
 
-```bash
-nx serve back
+1. Make sure you have Node.js installed on your machine.
+2. Open a terminal or command prompt.
+3. Navigate to the project root folder.
+4. Run `yarn install` or `npm install` to install project dependencies.
+5. Install Nx globally using: `npm install -g nx`.
+6. Create a `.env` file inside the root of the project and copy the contents from `.envsample` to it.
+7. Start the testing environment by running the following Docker command:
+
+```
+docker-compose -f docker-compose-test.yml up -d
 ```
 
-4. Start the frontend development server
+8. Run tests for the backend using: `nx test back`
 
-```bash
-nx serve front
+### Test (front)
+
+1. Make sure you have Node.js installed on your machine.
+2. Open a terminal or command prompt.
+3. Navigate to the project root folder.
+4. Run `yarn install` or `npm install` to install project dependencies.
+5. Install Nx globally using: `npm install -g nx`.
+6. Run tests for the frontend using: `nx test front`.
+
+### Production
+
+1. Create a `.env` file inside the root of the project and set `NX_API_ADDRESS=<ip-of-server>::4441/api`.
+2. Build and deploy the production environment using the following Docker command:
+
 ```
+docker-compose -f docker-compose.yml up --build -d
+```
+
+Note: Please ensure that you have Docker installed and running on your server for the production deployment.
+
+With these revised instructions, the steps are more organized and clear, making it easier for developers to follow and run the project in different environments.
 
 ## API Documentation
 
@@ -87,3 +125,5 @@ This project is licensed under the MIT License - see the [LICENSE](https://chat.
 ## Contact
 
 If you have any questions or need further assistance, feel free to contact me at [erfan.seidipoor@gmail.com](mailto:erfan.seidipoor@gmail.com).
+
+you can see final version of this software: [http://161.97.108.195:4442/](http://161.97.108.195:4442/)

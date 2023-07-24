@@ -1,0 +1,14 @@
+FROM node:18-alpine as build
+
+WORKDIR /app
+
+ADD package.json /app/package.json
+
+RUN npm install --legacy-peer-deps
+
+ADD . /app
+
+RUN npx nx build back
+RUN npx nx build back
+
+CMD ["npm", "run", "start:back:production"]
